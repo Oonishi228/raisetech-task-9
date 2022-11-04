@@ -1,5 +1,8 @@
 package com.raisetech.mybatisdemo;
 
+import lombok.Getter;
+
+@Getter
 public class NameResponse {
     private int id;
     private String name;
