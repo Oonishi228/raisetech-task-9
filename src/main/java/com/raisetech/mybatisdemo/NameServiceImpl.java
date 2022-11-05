@@ -22,4 +22,9 @@ public class NameServiceImpl implements NameService {
     public Optional<Name> findById(int id) {
         return nameMapper.findById(id);
     }
+
+    @Override
+    public Optional<Name> findByResidence(String residence) {
+        return nameMapper.findByResidence(residence);
+    }
 }
