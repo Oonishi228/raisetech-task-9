@@ -15,5 +15,5 @@ public interface NameMapper {
     Optional<Name> findById(int id);
 
     @Select("SELECT * FROM names WHERE residence = #{residence}")
-    Optional<Name> findByResidence(String residence);
+    List<Name> findByResidence(String residence);
 }

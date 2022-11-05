@@ -9,6 +9,6 @@ public interface NameService {
 
     Optional<Name> findById(int id);
 
-    Optional<Name> findByResidence(String residence);
+    List<Name> findByResidence(String residence);
 
 }
