@@ -7,7 +7,7 @@ public interface NameService {
 
     List<Name> findAll();
 
-    Optional<Name> findById(int id);
+    Optional<Name> findById(int id) throws Exception;
 
     List<Name> findByResidence(String residence);
 

@@ -20,7 +20,8 @@ public class NameServiceImpl implements NameService {
 
     @Override
     public Optional<Name> findById(int id) {
-        return nameMapper.findById(id);
+        Optional<Name> name = this.nameMapper.findById(id);
+        return Optional.ofNullable(nameMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("resource not found")));
     }
 
     @Override
