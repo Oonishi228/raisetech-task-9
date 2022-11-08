@@ -33,7 +33,7 @@ public class NameController {
         return nameService.findById(id).stream().map(NameResponse::new).toList();
     }
 
-    @GetMapping("/a")
+    @GetMapping("/residence")
     public List<NameResponse> getResidence(@RequestParam("residence") String residence) {
         return nameService.findByResidence(residence).stream().map(NameResponse::new).toList();
     }
