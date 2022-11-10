@@ -25,7 +25,7 @@ public class NameServiceImpl implements NameService {
     }
 
     @Override
-    public List<Name> findByResidence(String residence) {
-        return nameMapper.findByResidence(residence);
+    public List<Name> findByNameResidence(String name, String residence) {
+        return nameMapper.findByNameResidence(name, residence);
     }
 }
