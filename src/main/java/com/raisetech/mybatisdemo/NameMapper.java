@@ -14,6 +14,12 @@ public interface NameMapper {
     @Select("SELECT * FROM names WHERE id = #{id}")
     Optional<Name> findById(int id);
 
+    @Select("SELECT * FROM names WHERE name = #{name}")
+    List<Name> findByName(String name);
+
+    @Select("SELECT * FROM names WHERE residence = #{residence}")
+    List<Name> findByResidence(String residence);
+
     @Select("SELECT * FROM names WHERE name = #{name} AND residence = #{residence}")
     List<Name> findByNameResidence(String name, String residence);
 }

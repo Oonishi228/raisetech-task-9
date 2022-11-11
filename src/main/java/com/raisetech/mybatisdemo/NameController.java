@@ -18,18 +18,13 @@ public class NameController {
         this.nameService = nameService;
     }
 
-    @GetMapping
-    public List<NameResponse> getNames() {
-        return nameService.findAll().stream().map(NameResponse::new).toList();
-    }
-
     @GetMapping("/{id}")
     public List<NameResponse> getId(@PathVariable("id") int id) throws Exception {
         return nameService.findById(id).stream().map(NameResponse::new).toList();
     }
 
-    @GetMapping("/search")
-    public List<NameResponse> searchUser(@RequestParam(value = "name") String name, @RequestParam(value = "residence") String residence) {
+    @GetMapping
+    public List<NameResponse> searchUser(@RequestParam(name = "name", required = false) String name, @RequestParam(name = "residence", required = false) String residence) {
         return nameService.findByNameResidence(name, residence).stream().map(NameResponse::new).toList();
     }
 
