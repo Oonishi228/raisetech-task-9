@@ -3,6 +3,7 @@ package com.raisetech.mybatisdemo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -25,7 +26,25 @@ public class NameServiceImpl implements NameService {
     }
 
     @Override
+    public List<Name> findByName(String name) {
+        return nameMapper.findByName(name);
+    }
+
+    @Override
     public List<Name> findByResidence(String residence) {
         return nameMapper.findByResidence(residence);
+    }
+
+    @Override
+    public List<Name> findByNameAndResidence(String name, String residence) {
+
+        if (Objects.equals(name, residence)) {
+            return nameMapper.findAll();
+        } else if (name == null) {
+            return nameMapper.findByResidence(residence);
+        } else if (residence == null) {
+            return nameMapper.findByName(name);
+        }
+        return nameMapper.findByNameAndResidence(name, residence);
     }
 }

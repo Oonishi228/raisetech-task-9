@@ -18,24 +18,14 @@ public class NameController {
         this.nameService = nameService;
     }
 
-    @GetMapping("/")
-    public List<NameResponse> getNames() {
-        return nameService.findAll().stream().map(NameResponse::new).toList();
-    }
-
     @GetMapping("/{id}")
     public List<NameResponse> getId(@PathVariable("id") int id) throws Exception {
         return nameService.findById(id).stream().map(NameResponse::new).toList();
     }
 
     @GetMapping
-    public List<NameResponse> idResponse(@RequestParam("id") int id) throws Exception {
-        return nameService.findById(id).stream().map(NameResponse::new).toList();
-    }
-
-    @GetMapping("/residence")
-    public List<NameResponse> getResidence(@RequestParam("residence") String residence) {
-        return nameService.findByResidence(residence).stream().map(NameResponse::new).toList();
+    public List<NameResponse> searchUser(@RequestParam(name = "name", required = false) String name, @RequestParam(name = "residence", required = false) String residence) {
+        return nameService.findByNameAndResidence(name, residence).stream().map(NameResponse::new).toList();
     }
 
     @ExceptionHandler(value = ResourceNotFoundException.class)
