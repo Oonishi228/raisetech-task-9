@@ -1,18 +1,30 @@
 package com.raisetech.mybatisdemo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/names")
 public class NameController {
-    private final NameMapper nameMapper;
-    public NameController(NameMapper nameMapper) {
-        this.nameMapper = nameMapper;
+    private final NameService nameService;
+
+    public NameController(NameService nameService) {
+        this.nameService = nameService;
     }
-    @GetMapping("/names")
-    public List<Name> getNames() {
-        List<Name> names = nameMapper.findAll();
-        return names;
-}}
+
+    @GetMapping("/")
+    public List<NameResponse> getNames() {
+        return nameService.findAll().stream().map(NameResponse::new).toList();
+    }
+
+    @GetMapping("/{id}")
+    public List<NameResponse> getId(@PathVariable("id") int id) {
+        return nameService.findById(id).stream().map(NameResponse::new).toList();
+    }
+
+    @GetMapping
+    public List<NameResponse> idResponse(@RequestParam("id") int id) {
+        return nameService.findById(id).stream().map(NameResponse::new).toList();
+    }
+}
