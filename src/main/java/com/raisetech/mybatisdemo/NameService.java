@@ -9,4 +9,6 @@ public interface NameService {
 
     Optional<Name> findById(int id);
 
+    List<Name> findByResidence(String residence);
+
 }

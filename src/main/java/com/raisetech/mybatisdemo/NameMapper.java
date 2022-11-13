@@ -10,6 +10,10 @@ import java.util.Optional;
 public interface NameMapper {
     @Select("SELECT * FROM names")
     List<Name> findAll();
+
     @Select("SELECT * FROM names WHERE id = #{id}")
     Optional<Name> findById(int id);
+
+    @Select("SELECT * FROM names WHERE residence = #{residence}")
+    List<Name> findByResidence(String residence);
 }
