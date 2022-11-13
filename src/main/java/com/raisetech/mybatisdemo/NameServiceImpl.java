@@ -36,7 +36,7 @@ public class NameServiceImpl implements NameService {
     }
 
     @Override
-    public List<Name> findByNameResidence(String name, String residence) {
+    public List<Name> findByNameAndResidence(String name, String residence) {
 
         if (Objects.equals(name, residence)) {
             return nameMapper.findAll();
@@ -45,6 +45,6 @@ public class NameServiceImpl implements NameService {
         } else if (residence == null) {
             return nameMapper.findByName(name);
         }
-        return nameMapper.findByNameResidence(name, residence);
+        return nameMapper.findByNameAndResidence(name, residence);
     }
 }

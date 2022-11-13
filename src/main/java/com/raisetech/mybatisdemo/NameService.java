@@ -13,5 +13,5 @@ public interface NameService {
 
     List<Name> findByName(String Name);
 
-    List<Name> findByNameResidence(String name, String residence);
+    List<Name> findByNameAndResidence(String name, String residence);
 }

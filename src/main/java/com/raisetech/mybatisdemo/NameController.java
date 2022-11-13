@@ -25,7 +25,7 @@ public class NameController {
 
     @GetMapping
     public List<NameResponse> searchUser(@RequestParam(name = "name", required = false) String name, @RequestParam(name = "residence", required = false) String residence) {
-        return nameService.findByNameResidence(name, residence).stream().map(NameResponse::new).toList();
+        return nameService.findByNameAndResidence(name, residence).stream().map(NameResponse::new).toList();
     }
 
     @ExceptionHandler(value = ResourceNotFoundException.class)
