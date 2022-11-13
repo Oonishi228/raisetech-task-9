@@ -11,21 +11,21 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/names")
-public class NameController {
-    private final NameService nameService;
+public class UserController {
+    private final UserService nameService;
 
-    public NameController(NameService nameService) {
+    public UserController(UserService nameService) {
         this.nameService = nameService;
     }
 
     @GetMapping("/{id}")
-    public List<NameResponse> getId(@PathVariable("id") int id) throws Exception {
-        return nameService.findById(id).stream().map(NameResponse::new).toList();
+    public List<UserResponse> getId(@PathVariable("id") int id) throws Exception {
+        return nameService.findById(id).stream().map(UserResponse::new).toList();
     }
 
     @GetMapping
-    public List<NameResponse> searchUser(@RequestParam(name = "name", required = false) String name, @RequestParam(name = "residence", required = false) String residence) {
-        return nameService.findByNameAndResidence(name, residence).stream().map(NameResponse::new).toList();
+    public List<UserResponse> searchUser(@RequestParam(name = "name", required = false) String name, @RequestParam(name = "residence", required = false) String residence) {
+        return nameService.findByNameAndResidence(name, residence).stream().map(UserResponse::new).toList();
     }
 
     @ExceptionHandler(value = ResourceNotFoundException.class)

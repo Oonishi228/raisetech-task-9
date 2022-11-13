@@ -7,19 +7,19 @@ import java.util.List;
 import java.util.Optional;
 
 @Mapper
-public interface NameMapper {
+public interface UserMapper {
     @Select("SELECT * FROM names")
-    List<Name> findAll();
+    List<User> findAll();
 
     @Select("SELECT * FROM names WHERE id = #{id}")
-    Optional<Name> findById(int id);
+    Optional<User> findById(int id);
 
     @Select("SELECT * FROM names WHERE name = #{name}")
-    List<Name> findByName(String name);
+    List<User> findByName(String name);
 
     @Select("SELECT * FROM names WHERE residence = #{residence}")
-    List<Name> findByResidence(String residence);
+    List<User> findByResidence(String residence);
 
     @Select("SELECT * FROM names WHERE name = #{name} AND residence = #{residence}")
-    List<Name> findByNameAndResidence(String name, String residence);
+    List<User> findByNameAndResidence(String name, String residence);
 }
