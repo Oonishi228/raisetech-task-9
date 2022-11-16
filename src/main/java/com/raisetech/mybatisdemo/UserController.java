@@ -30,4 +30,10 @@ public class UserController {
         userService.createUser(user);
         return ResponseEntity.ok("登録しました。");
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable int id) {
+        userService.deleteById(id);
+        return ResponseEntity.ok("削除しました。");
+    }
 }
