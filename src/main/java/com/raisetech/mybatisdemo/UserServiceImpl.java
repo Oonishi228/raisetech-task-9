@@ -10,8 +10,8 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
 
-    public UserServiceImpl(UserMapper nameMapper) {
-        this.userMapper = nameMapper;
+    public UserServiceImpl(UserMapper userMapper) {
+        this.userMapper = userMapper;
     }
 
     @Override
@@ -21,7 +21,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<User> findById(int id) {
-        Optional<User> name = this.userMapper.findById(id);
         return Optional.ofNullable(userMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("resource not found")));
     }
 
@@ -49,8 +48,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void createUser(User user) {
-        userMapper.createUser(user);
+    public void createByUser(User user) {
+        userMapper.createByUser(user);
+    }
+
+    @Override
+    public void updateByUser(User user) {
+        userMapper.updateByUser(user);
     }
 
     @Override

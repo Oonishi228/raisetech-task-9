@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/names")
+@RequestMapping("/users")
 public class UserController {
     private final UserService userService;
 
@@ -26,9 +26,15 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<String> create(@RequestBody @Validated User user) {
-        userService.createUser(user);
+    public ResponseEntity<String> createUser(@RequestBody @Validated User user) {
+        userService.createByUser(user);
         return ResponseEntity.ok("登録しました。");
+    }
+
+    @PatchMapping
+    public ResponseEntity<String> updateUser(@RequestBody @Validated User user) {
+        userService.updateByUser(user);
+        return ResponseEntity.ok("更新しました。");
     }
 
     @DeleteMapping("/{id}")
