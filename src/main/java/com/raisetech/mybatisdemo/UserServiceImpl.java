@@ -37,14 +37,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findByNameAndResidence(String name, String residence) {
 
-        if (Objects.equals(name, residence)) {
-            return userMapper.findAll();
-        } else if (name == null) {
-            return userMapper.findByResidence(residence);
-        } else if (residence == null) {
+        if ((name != null) && (residence != null)) {
+            return userMapper.findByNameAndResidence(name, residence);
+        } else if ((name != null) && (residence == null)) {
             return userMapper.findByName(name);
+        } else if ((name == null) && (residence == null)) {
+            return userMapper.findAll();
         }
-        return userMapper.findByNameAndResidence(name, residence);
+        return userMapper.findByResidence(residence);
     }
 
     @Override
