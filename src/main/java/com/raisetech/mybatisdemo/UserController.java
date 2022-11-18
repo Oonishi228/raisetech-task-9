@@ -5,6 +5,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/users")
@@ -26,20 +27,20 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createUser(@RequestBody @Validated User user) {
+    public Map<String, String> createUser(@RequestBody @Validated User user) {
         userService.createUser(user);
-        return ResponseEntity.ok("登録しました。");
+        return Map.of("message", "登録しました。");
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<String> updateUser(@PathVariable int id, @RequestBody @Validated User user) {
+    public Map<String, String> updateUser(@PathVariable int id, @RequestBody @Validated User user) {
         userService.updateUser(user);
-        return ResponseEntity.ok("更新しました。");
+        return Map.of("message", "更新しました。");
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteUser(@PathVariable int id) {
+    public Map<String, String> deleteUser(@PathVariable int id) {
         userService.deleteById(id);
-        return ResponseEntity.ok("削除しました。");
+        return Map.of("message", "削除しました。");
     }
 }
