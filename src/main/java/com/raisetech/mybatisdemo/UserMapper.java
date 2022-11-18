@@ -23,10 +23,10 @@ public interface UserMapper {
     List<User> findByNameAndResidence(String name, String residence);
 
     @Insert("INSERT INTO users (name, residence) VALUES (#{name}, #{residence})")
-    void createByUser(User user);
+    void create(User user);
 
     @Update("UPDATE users SET name = #{name}, residence = #{residence} WHERE id = #{id}")
-    void updateByUser(User user);
+    void update(User user);
 
     @Delete("DELETE FROM users WHERE id = #{id}")
     void deleteById(int id);

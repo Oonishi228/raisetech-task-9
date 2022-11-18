@@ -27,13 +27,13 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<String> createUser(@RequestBody @Validated User user) {
-        userService.createByUser(user);
+        userService.createUser(user);
         return ResponseEntity.ok("登録しました。");
     }
 
-    @PatchMapping
-    public ResponseEntity<String> updateUser(@RequestBody @Validated User user) {
-        userService.updateByUser(user);
+    @PatchMapping("/{id}")
+    public ResponseEntity<String> updateUser(@PathVariable int id, @RequestBody @Validated User user) {
+        userService.updateUser(user);
         return ResponseEntity.ok("更新しました。");
     }
 

@@ -48,13 +48,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void createByUser(User user) {
-        userMapper.createByUser(user);
+    public void createUser(User user) {
+        userMapper.create(user);
     }
 
     @Override
-    public void updateByUser(User user) {
-        userMapper.updateByUser(user);
+    public void updateUser(User user) {
+        userMapper.update(user);
     }
 
     @Override
