@@ -27,8 +27,8 @@ public class UserController {
     }
 
     @PostMapping
-    public Map<String, String> createUser(@RequestBody @Validated User user) {
-        userService.createUser(user);
+    public Map<String, String> createUser(@RequestBody @Validated CreateForm form) {
+        userService.createUser(form);
         return Map.of("message", "登録しました。");
     }
 

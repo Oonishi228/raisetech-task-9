@@ -48,8 +48,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void createUser(User user) {
-        userMapper.create(user);
+    public void createUser(CreateForm form) {
+        userMapper.create(form);
     }
 
     @Override

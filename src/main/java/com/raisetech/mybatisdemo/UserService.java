@@ -15,7 +15,7 @@ public interface UserService {
 
     List<User> findByNameAndResidence(String name, String residence);
 
-    void createUser(User user);
+    void createUser(CreateForm form);
 
     void updateUser(User user);
 

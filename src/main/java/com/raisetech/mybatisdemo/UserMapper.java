@@ -23,7 +23,7 @@ public interface UserMapper {
     List<User> findByNameAndResidence(String name, String residence);
 
     @Insert("INSERT INTO users (name, residence) VALUES (#{name}, #{residence})")
-    void create(User user);
+    void create(CreateForm form);
 
     @Update("UPDATE users SET name = #{name}, residence = #{residence} WHERE id = #{id}")
     void update(User user);
