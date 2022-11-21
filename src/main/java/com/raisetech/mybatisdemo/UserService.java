@@ -7,7 +7,7 @@ public interface UserService {
 
     List<User> findAll();
 
-    Optional<User> findById(int id) throws Exception;
+    User findById(int id) throws Exception;
 
     List<User> findByResidence(String residence);
 

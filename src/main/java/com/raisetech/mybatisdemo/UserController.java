@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
@@ -17,8 +18,8 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public List<UserResponse> getId(@PathVariable("id") int id) throws Exception {
-        return userService.findById(id).stream().map(UserResponse::new).toList();
+    public User getId(@PathVariable("id") int id) throws Exception {
+        return userService.findById(id);
     }
 
     @GetMapping
