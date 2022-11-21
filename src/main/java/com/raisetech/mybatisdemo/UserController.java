@@ -35,7 +35,7 @@ public class UserController {
 
     @PatchMapping("/{id}")
     public Map<String, String> updateUser(@PathVariable int id, @RequestBody @Validated User user) {
-        userService.updateUser(user);
+        userService.updateUser(user, id);
         return Map.of("message", "更新しました。");
     }
 

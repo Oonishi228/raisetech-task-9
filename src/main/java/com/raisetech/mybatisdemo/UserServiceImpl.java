@@ -54,7 +54,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(User user) {
+    public void updateUser(User user, int id) {
+        userMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("resource not found"));
         userMapper.update(user);
     }
 
