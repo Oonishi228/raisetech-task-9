@@ -3,12 +3,12 @@ package com.raisetech.mybatisdemo;
 import lombok.Getter;
 
 @Getter
-public class Name {
+public class User {
     private int id;
     private String name;
     private String residence;
 
-    public Name(int id, String name, String residence) {
+    public User(int id, String name, String residence) {
         this.id = id;
         this.name = name;
         this.residence = residence;

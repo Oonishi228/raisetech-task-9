@@ -2,31 +2,15 @@ package com.raisetech.mybatisdemo;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.ZonedDateTime;
-import java.util.List;
 import java.util.Map;
 
-@RestController
-@RequestMapping("/names")
-public class NameController {
-    private final NameService nameService;
-
-    public NameController(NameService nameService) {
-        this.nameService = nameService;
-    }
-
-    @GetMapping("/{id}")
-    public List<NameResponse> getId(@PathVariable("id") int id) throws Exception {
-        return nameService.findById(id).stream().map(NameResponse::new).toList();
-    }
-
-    @GetMapping
-    public List<NameResponse> searchUser(@RequestParam(name = "name", required = false) String name, @RequestParam(name = "residence", required = false) String residence) {
-        return nameService.findByNameAndResidence(name, residence).stream().map(NameResponse::new).toList();
-    }
+@RestControllerAdvice
+public class WebExceptionHandler {
 
     @ExceptionHandler(value = ResourceNotFoundException.class)
     public ResponseEntity<Map<String, String>> handleNoResourceFound(

@@ -3,13 +3,13 @@ package com.raisetech.mybatisdemo;
 import lombok.Getter;
 
 @Getter
-public class NameResponse {
+public class UserResponse {
     private int id;
     private String name;
 
     private String residence;
 
-    public NameResponse(Name name) {
+    public UserResponse(User name) {
         this.id = name.getId();
         this.name = name.getName();
         this.residence = name.getResidence();
