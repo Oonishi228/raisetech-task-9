@@ -1,5 +1,6 @@
 package com.raisetech.mybatisdemo;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -22,4 +23,7 @@ public interface UserMapper {
 
     @Select("SELECT * FROM names WHERE name = #{name} AND residence = #{residence}")
     List<User> findByNameAndResidence(String name, String residence);
+
+    @Insert("insert into names (name, residence) values (#{name}, #{residence})")
+    void createUser(User user);
 }

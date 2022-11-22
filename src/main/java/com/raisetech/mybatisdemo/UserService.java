@@ -14,4 +14,6 @@ public interface UserService {
     List<User> findByName(String Name);
 
     List<User> findByNameAndResidence(String name, String residence);
+
+    void createUser(User user);
 }
