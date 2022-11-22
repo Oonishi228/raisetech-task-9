@@ -1,5 +1,7 @@
-package com.raisetech.mybatisdemo;
+package com.raisetech.mybatisdemo.mapper;
 
+import com.raisetech.mybatisdemo.entity.User;
+import com.raisetech.mybatisdemo.form.CreateForm;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

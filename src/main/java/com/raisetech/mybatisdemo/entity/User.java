@@ -1,4 +1,4 @@
-package com.raisetech.mybatisdemo;
+package com.raisetech.mybatisdemo.entity;
 
 import lombok.Getter;
 import org.hibernate.validator.constraints.Length;

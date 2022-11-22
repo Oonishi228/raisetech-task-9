@@ -1,4 +1,4 @@
-package com.raisetech.mybatisdemo;
+package com.raisetech.mybatisdemo.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
 

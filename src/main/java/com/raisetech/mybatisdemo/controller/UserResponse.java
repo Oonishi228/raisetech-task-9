@@ -1,5 +1,6 @@
-package com.raisetech.mybatisdemo;
+package com.raisetech.mybatisdemo.controller;
 
+import com.raisetech.mybatisdemo.entity.User;
 import lombok.Getter;
 
 @Getter

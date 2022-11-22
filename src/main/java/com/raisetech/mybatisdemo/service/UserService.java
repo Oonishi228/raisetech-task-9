@@ -1,7 +1,9 @@
-package com.raisetech.mybatisdemo;
+package com.raisetech.mybatisdemo.service;
+
+import com.raisetech.mybatisdemo.entity.User;
+import com.raisetech.mybatisdemo.form.CreateForm;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserService {
 
