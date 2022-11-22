@@ -10,8 +10,8 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
 
-    public UserServiceImpl(UserMapper nameMapper) {
-        this.userMapper = nameMapper;
+    public UserServiceImpl(UserMapper userMapper) {
+        this.userMapper = userMapper;
     }
 
     @Override
@@ -20,9 +20,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> findById(int id) {
-        Optional<User> name = this.userMapper.findById(id);
-        return Optional.ofNullable(userMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("resource not found")));
+    public User findById(int id) {
+        Optional<User> user = userMapper.findById(id);
+        return userMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("resource not found"));
     }
 
     @Override
@@ -38,19 +38,25 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findByNameAndResidence(String name, String residence) {
 
-        if (Objects.equals(name, residence)) {
-            return userMapper.findAll();
-        } else if (name == null) {
-            return userMapper.findByResidence(residence);
-        } else if (residence == null) {
+        if ((name != null) && (residence != null)) {
+            return userMapper.findByNameAndResidence(name, residence);
+        } else if ((name != null) && (residence == null)) {
             return userMapper.findByName(name);
+        } else if ((name == null) && (residence != null)) {
+            return userMapper.findByResidence(residence);
         }
-        return userMapper.findByNameAndResidence(name, residence);
+        return userMapper.findAll();
     }
 
     @Override
-    public void createUser(User user) {
-        userMapper.createUser(user);
+    public void createUser(CreateForm form) {
+        userMapper.create(form);
+    }
+
+    @Override
+    public void updateUser(int id, User user) {
+        userMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("resource not found"));
+        userMapper.update(user);
     }
 
     @Override

@@ -8,10 +8,9 @@ import javax.validation.constraints.NotBlank;
 @Getter
 public class User {
     private int id;
-    @NotBlank
-    @Length(max = 20)
+
     private String name;
-    @NotBlank
+
     private String residence;
 
     public User(int id, String name, String residence) {

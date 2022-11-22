@@ -9,10 +9,10 @@ public class UserResponse {
 
     private String residence;
 
-    public UserResponse(User name) {
-        this.id = name.getId();
-        this.name = name.getName();
-        this.residence = name.getResidence();
+    public UserResponse(User user) {
+        this.id = user.getId();
+        this.name = user.getName();
+        this.residence = user.getResidence();
     }
 
     public int getId() {

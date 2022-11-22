@@ -5,9 +5,11 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/names")
+@RequestMapping("/users")
 public class UserController {
     private final UserService userService;
 
@@ -16,8 +18,8 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public List<UserResponse> getId(@PathVariable("id") int id) throws Exception {
-        return userService.findById(id).stream().map(UserResponse::new).toList();
+    public User getId(@PathVariable("id") int id) throws Exception {
+        return userService.findById(id);
     }
 
     @GetMapping
@@ -26,14 +28,20 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<String> create(@RequestBody @Validated User user) {
-        userService.createUser(user);
-        return ResponseEntity.ok("登録しました。");
+    public Map<String, String> createUser(@RequestBody @Validated CreateForm form) {
+        userService.createUser(form);
+        return Map.of("message", "登録しました。");
+    }
+
+    @PatchMapping("/{id}")
+    public Map<String, String> updateUser(@PathVariable int id, @RequestBody @Validated User user) {
+        userService.updateUser(id, user);
+        return Map.of("message", "更新しました。");
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteUser(@PathVariable int id) {
+    public Map<String, String> deleteUser(@PathVariable int id) {
         userService.deleteById(id);
-        return ResponseEntity.ok("削除しました。");
+        return Map.of("message", "削除しました。");
     }
 }
