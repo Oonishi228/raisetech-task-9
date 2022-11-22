@@ -42,10 +42,10 @@ public class UserServiceImpl implements UserService {
             return userMapper.findByNameAndResidence(name, residence);
         } else if ((name != null) && (residence == null)) {
             return userMapper.findByName(name);
-        } else if ((name == null) && (residence == null)) {
-            return userMapper.findAll();
+        } else if ((name == null) && (residence != null)) {
+            return userMapper.findByResidence(residence);
         }
-        return userMapper.findByResidence(residence);
+        return userMapper.findAll();
     }
 
     @Override
@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(User user, int id) {
+    public void updateUser(int id, User user) {
         userMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("resource not found"));
         userMapper.update(user);
     }
