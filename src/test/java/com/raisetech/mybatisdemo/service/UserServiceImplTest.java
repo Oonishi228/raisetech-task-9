@@ -25,7 +25,7 @@ class UserServiceImplTest {
     @Test
     public void 存在するユーザーのIDを指定したときに正常にユーザーが返されること() throws Exception {
         doReturn(Optional.of(new User(1, "koyama", "tokyo"))).when(userMapper).findById(1);
-
+//tesuto
         User actual = userServiceImpl.findById(1);
         assertThat(actual.getId()).isEqualTo(1);
         assertThat(actual.getName()).isEqualTo("koyama");
