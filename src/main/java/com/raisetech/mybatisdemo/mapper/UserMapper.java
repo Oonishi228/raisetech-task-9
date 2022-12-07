@@ -1,5 +1,8 @@
-package com.raisetech.mybatisdemo;
+package com.raisetech.mybatisdemo.mapper;
 
+import com.raisetech.mybatisdemo.entity.User;
+import com.raisetech.mybatisdemo.form.CreateForm;
+import com.raisetech.mybatisdemo.form.UpdateForm;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -26,7 +29,7 @@ public interface UserMapper {
     void create(CreateForm form);
 
     @Update("UPDATE users SET name = #{name}, residence = #{residence} WHERE id = #{id}")
-    void update(User user);
+    void update(UpdateForm form);
 
     @Delete("DELETE FROM users WHERE id = #{id}")
     void deleteById(int id);

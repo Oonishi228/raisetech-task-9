@@ -1,7 +1,10 @@
-package com.raisetech.mybatisdemo;
+package com.raisetech.mybatisdemo.service;
+
+import com.raisetech.mybatisdemo.entity.User;
+import com.raisetech.mybatisdemo.form.CreateForm;
+import com.raisetech.mybatisdemo.form.UpdateForm;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserService {
 
@@ -17,7 +20,7 @@ public interface UserService {
 
     void createUser(CreateForm form);
 
-    void updateUser(int id, User user);
+    void updateUser(int id, UpdateForm form);
 
     void deleteById(int id);
 }

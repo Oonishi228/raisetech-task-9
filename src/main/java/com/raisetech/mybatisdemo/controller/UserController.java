@@ -1,12 +1,14 @@
-package com.raisetech.mybatisdemo;
+package com.raisetech.mybatisdemo.controller;
 
-import org.springframework.http.ResponseEntity;
+import com.raisetech.mybatisdemo.entity.User;
+import com.raisetech.mybatisdemo.form.CreateForm;
+import com.raisetech.mybatisdemo.form.UpdateForm;
+import com.raisetech.mybatisdemo.service.UserService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
@@ -34,8 +36,8 @@ public class UserController {
     }
 
     @PatchMapping("/{id}")
-    public Map<String, String> updateUser(@PathVariable int id, @RequestBody @Validated User user) {
-        userService.updateUser(id, user);
+    public Map<String, String> updateUser(@PathVariable int id, @RequestBody @Validated UpdateForm form) {
+        userService.updateUser(id, form);
         return Map.of("message", "更新しました。");
     }
 

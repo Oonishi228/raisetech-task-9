@@ -1,5 +1,6 @@
-package com.raisetech.mybatisdemo;
+package com.raisetech.mybatisdemo.exception;
 
+import com.raisetech.mybatisdemo.exception.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
