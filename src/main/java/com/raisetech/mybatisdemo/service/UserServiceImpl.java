@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(int id) {
+    public User getUser(Integer id) {
         Optional<User> user = userMapper.findById(id);
         return userMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("resource not found"));
     }
@@ -58,13 +58,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(int id, UpdateForm form) {
+    public void updateUser(Integer id, UpdateForm form) {
         userMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("resource not found"));
         userMapper.update(form);
     }
 
     @Override
-    public void deleteById(int id) {
+    public void deleteById(Integer id) {
         userMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("resource not found"));
         userMapper.deleteById(id);
     }

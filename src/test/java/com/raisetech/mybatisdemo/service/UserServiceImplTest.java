@@ -8,6 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,13 +24,17 @@ class UserServiceImplTest {
     UserMapper userMapper;
 
     @Test
-    public void 存在するユーザーのIDを指定したときに正常にユーザーが返されること() throws Exception {
-        doReturn(Optional.of(new User(1, "koyama", "tokyo"))).when(userMapper).findById(1);
-
-        User actual = userServiceImpl.findById(1);
-        assertThat(actual.getId()).isEqualTo(1);
-        assertThat(actual.getName()).isEqualTo("koyama");
-        assertThat(actual.getResidence()).isEqualTo("tokyo");
-
+    public void 存在するユーザーのIDを指定したときに正常にユーザーが返されること() {
+        doReturn(Optional.of(new User(1, "小山", "東京"))).when(userMapper).findById(1);
+        User actual = userServiceImpl.getUser(1);
+        assertThat(actual).isEqualTo(new User(1, "小山", "東京"));
     }
+
+    @Test
+    public void ユーザーが全件取得できること() {
+        doReturn(List.of(new User(1, "小山", "東京"), new User(2, "鈴木", "埼玉"))).when(userMapper).findAll();
+        List<User> actual = userServiceImpl.findAll();
+        assertThat(actual).isEqualTo(List.of(new User(1, "小山", "東京"), new User(2, "鈴木", "埼玉")));
+    }
+
 }
