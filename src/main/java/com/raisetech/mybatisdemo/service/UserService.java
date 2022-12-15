@@ -10,7 +10,7 @@ public interface UserService {
 
     List<User> findAll();
 
-    User findById(int id) throws Exception;
+    User getUser(Integer id) throws Exception;
 
     List<User> findByResidence(String residence);
 
@@ -20,7 +20,7 @@ public interface UserService {
 
     void createUser(CreateForm form);
 
-    void updateUser(int id, UpdateForm form);
+    void updateUser(Integer id, UpdateForm form);
 
-    void deleteById(int id);
+    void deleteById(Integer id);
 }

@@ -14,7 +14,7 @@ public interface UserMapper {
     List<User> findAll();
 
     @Select("SELECT * FROM users WHERE id = #{id}")
-    Optional<User> findById(int id);
+    Optional<User> findById(Integer id);
 
     @Select("SELECT * FROM users WHERE name = #{name}")
     List<User> findByName(String name);
@@ -32,5 +32,5 @@ public interface UserMapper {
     void update(UpdateForm form);
 
     @Delete("DELETE FROM users WHERE id = #{id}")
-    void deleteById(int id);
+    void deleteById(Integer id);
 }

@@ -20,8 +20,8 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public User getId(@PathVariable("id") int id) throws Exception {
-        return userService.findById(id);
+    public User getId(@PathVariable("id") Integer id) throws Exception {
+        return userService.getUser(id);
     }
 
     @GetMapping
@@ -36,13 +36,13 @@ public class UserController {
     }
 
     @PatchMapping("/{id}")
-    public Map<String, String> updateUser(@PathVariable int id, @RequestBody @Validated UpdateForm form) {
+    public Map<String, String> updateUser(@PathVariable Integer id, @RequestBody @Validated UpdateForm form) {
         userService.updateUser(id, form);
         return Map.of("message", "更新しました。");
     }
 
     @DeleteMapping("/{id}")
-    public Map<String, String> deleteUser(@PathVariable int id) {
+    public Map<String, String> deleteUser(@PathVariable Integer id) {
         userService.deleteById(id);
         return Map.of("message", "削除しました。");
     }

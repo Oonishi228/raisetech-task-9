@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 @Getter
 public class UpdateForm {
 
-    private int id;
+    private Integer id;
 
     @NotBlank
     @Length(max = 20)
@@ -17,7 +17,7 @@ public class UpdateForm {
     @NotBlank
     private String residence;
 
-    public UpdateForm(int id, String name, String residence) {
+    public UpdateForm(Integer id, String name, String residence) {
         this.id = id;
         this.name = name;
         this.residence = residence;
